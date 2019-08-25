@@ -1,16 +1,16 @@
-FROM alpine:3.7
+FROM alpine:3.10
 
-MAINTAINER David Coppit <david@coppit.org>
+MAINTAINER David Coppit <david@coppit.org> & Liam Cottrell <liam@cottrell.tech>
 
 ENV TERM=xterm-256color
 
 RUN true && \
 \
-echo "http://dl-cdn.alpinelinux.org/alpine/v3.7/community" >> /etc/apk/repositories && \
+echo "http://dl-cdn.alpinelinux.org/alpine/v3.10/community" >> /etc/apk/repositories && \
 apk --update upgrade && \
 \
-# Basics, including runit
-apk add bash curl htop runit && \
+# Basics, including runit & rsync
+apk add bash curl htop runit rsync openssh-client && \
 \
 # Needed by our code
 apk add --no-cache python3 icu-libs shadow && \
